@@ -1,137 +1,66 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Descarga 90 — interfaz moderna para analizar enlaces de contenido multimedia.">
-  <title>Descarga 90 — Descarga tus videos</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="Descarga 90 — descargador de videos desde URLs directas.">
+  <title>Descarga 90 — Tu contenido. Tu descarga.</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <div class="ambient ambient-one"></div>
-  <div class="ambient ambient-two"></div>
-
-  <header class="header">
-    <a class="brand" href="#">
-      <span class="brand-mark">90</span>
-      <span>DESCARGA <b>90</b></span>
-    </a>
-    <nav>
-      <a href="#como-funciona">Cómo funciona</a>
-      <a href="#plataformas">Plataformas</a>
-      <a href="#faq">FAQ</a>
-    </nav>
-    <button class="menu-btn" aria-label="Abrir menú">☰</button>
+  <header class="nav">
+    <a class="brand" href="#"><span class="logo">90</span><span>DESCARGA <b>90</b></span></a>
+    <nav><a href="#como">Cómo funciona</a><a href="#formatos">Formatos</a><a href="#faq">FAQ</a></nav>
   </header>
 
   <main>
     <section class="hero">
-      <div class="eyebrow"><span></span> SIMPLE · RÁPIDO · 90</div>
+      <div class="eyebrow">● SIMPLE · RÁPIDO · 90</div>
       <h1>Tu contenido.<br><em>Tu descarga.</em></h1>
-      <p class="hero-copy">
-        Pega un enlace, elige una plataforma y prepara tu contenido para descargar.
-        Una experiencia limpia, rápida y pensada para móvil.
-      </p>
+      <p class="lead">Pega el enlace directo de un video que tengas derecho a descargar y obtén el archivo de forma sencilla.</p>
 
-      <div class="downloader-card">
-        <div class="platform-tabs" id="platformTabs">
-          <button class="platform active" data-platform="TikTok">TikTok</button>
-          <button class="platform" data-platform="Instagram">Instagram</button>
-          <button class="platform" data-platform="Facebook">Facebook</button>
-          <button class="platform" data-platform="YouTube">YouTube</button>
-        </div>
-
+      <div class="downloader">
+        <div class="tabs"><button class="active">MP4 · VIDEO</button></div>
         <div class="input-row">
-          <div class="url-wrap">
-            <span class="link-icon">↗</span>
-            <input id="urlInput" type="url" placeholder="Pega aquí el enlace de tu video..." autocomplete="off">
-            <button class="clear-btn" id="clearBtn" aria-label="Limpiar">×</button>
+          <input id="url" type="url" placeholder="https://ejemplo.com/video.mp4" autocomplete="off">
+          <button id="analyze">Analizar <span>→</span></button>
+        </div>
+        <div class="hint">Admite URLs directas a archivos de video, como .mp4, .webm o .mov.</div>
+
+        <div id="result" class="result hidden">
+          <div class="preview"><span>90</span><small>VIDEO</small></div>
+          <div class="result-info">
+            <div class="tag">ENLACE DETECTADO</div>
+            <h3 id="resultTitle">Video listo</h3>
+            <p id="resultUrl"></p>
           </div>
-          <button class="analyze-btn" id="analyzeBtn">
-            <span>Analizar</span><span class="arrow">→</span>
-          </button>
+          <button id="download" class="download-btn">↓ DESCARGAR MP4</button>
         </div>
-
-        <div class="selected-platform">
-          Plataforma seleccionada: <strong id="selectedPlatform">TikTok</strong>
-        </div>
-
-        <div class="result" id="result" hidden>
-          <div class="result-preview">
-            <div class="fake-thumbnail">
-              <span>90</span>
-              <small>PREVIEW</small>
-            </div>
-            <div>
-              <span class="result-label">ENLACE DETECTADO</span>
-              <h3 id="resultTitle">Contenido listo para procesar</h3>
-              <p id="resultMeta">Selecciona un formato disponible.</p>
-            </div>
-          </div>
-          <div class="formats" id="formats"></div>
-        </div>
-
-        <p class="notice">
-          Usa Descarga 90 únicamente con contenido que tengas derecho a descargar o reutilizar.
-          La interfaz requiere un backend autorizado para realizar la obtención real del archivo.
-        </p>
+        <div id="status" class="status"></div>
       </div>
     </section>
 
-    <section class="stats">
-      <div><strong>01</strong><span>Pega el enlace</span></div>
-      <div><strong>02</strong><span>Analiza el contenido</span></div>
-      <div><strong>03</strong><span>Elige tu formato</span></div>
-      <div><strong>90</strong><span>Descarga</span></div>
+    <section id="como" class="steps">
+      <article><b>01</b><h3>Pega el enlace</h3><p>Usa una URL directa al archivo de video.</p></article>
+      <article><b>02</b><h3>Analiza</h3><p>La página comprueba que la URL sea compatible.</p></article>
+      <article><b>03</b><h3>Descarga</h3><p>El backend autorizado entrega el archivo.</p></article>
+      <article><b>90</b><h3>Listo</h3><p>Guarda tu video donde quieras.</p></article>
     </section>
 
-    <section class="section" id="plataformas">
-      <div class="section-heading">
-        <span class="section-kicker">COMPATIBILIDAD</span>
-        <h2>Una sola web.<br><span>Varias plataformas.</span></h2>
-      </div>
-      <div class="platform-grid">
-        <article class="platform-card"><div class="p-icon">♪</div><h3>TikTok</h3><p>Analiza enlaces de contenido público.</p><span>01</span></article>
-        <article class="platform-card"><div class="p-icon">◎</div><h3>Instagram</h3><p>Preparado para enlaces de contenido público.</p><span>02</span></article>
-        <article class="platform-card"><div class="p-icon">f</div><h3>Facebook</h3><p>Procesamiento de enlaces compatibles.</p><span>03</span></article>
-        <article class="platform-card dark"><div class="p-icon">▶</div><h3>YouTube</h3><p>Interfaz preparada para video y audio.</p><span>04</span></article>
-      </div>
+    <section id="formatos" class="info">
+      <h2>Diseñado para ser simple.</h2>
+      <p>Esta versión está preparada para GitHub Pages y un backend independiente. No expone claves privadas en el navegador.</p>
     </section>
 
-    <section class="how section" id="como-funciona">
-      <div class="how-copy">
-        <span class="section-kicker">ASÍ DE FÁCIL</span>
-        <h2>Menos clics.<br><span>Más contenido.</span></h2>
-        <p>Descarga 90 está diseñada para que el recorrido sea directo: enlace, análisis y formato. Sin pantallas innecesarias.</p>
-      </div>
-      <div class="steps">
-        <div class="step"><b>01</b><div><h3>Pega el enlace</h3><p>Copia el enlace del contenido y colócalo en el buscador.</p></div></div>
-        <div class="step"><b>02</b><div><h3>Analiza</h3><p>El sistema identifica la plataforma y consulta las opciones disponibles.</p></div></div>
-        <div class="step"><b>03</b><div><h3>Elige formato</h3><p>Selecciona el formato que corresponda a tu contenido y uso permitido.</p></div></div>
-      </div>
-    </section>
-
-    <section class="faq section" id="faq">
-      <div class="section-heading">
-        <span class="section-kicker">PREGUNTAS</span>
-        <h2>Preguntas<br><span>frecuentes.</span></h2>
-      </div>
-      <div class="faq-list">
-        <button class="faq-item"><span>¿Qué enlaces puedo utilizar?</span><b>+</b><p>La versión visual acepta enlaces de las plataformas seleccionadas. La descarga real depende del backend y de las reglas de cada plataforma.</p></button>
-        <button class="faq-item"><span>¿Funciona en celular?</span><b>+</b><p>Sí. La interfaz está diseñada con enfoque mobile-first y se adapta a pantallas pequeñas.</p></button>
-        <button class="faq-item"><span>¿Dónde se procesa el archivo?</span><b>+</b><p>Esta versión incluye el frontend. Para procesar archivos necesitas conectar un servidor backend y una implementación compatible con las políticas de las plataformas.</p></button>
-      </div>
+    <section id="faq" class="faq">
+      <h2>Preguntas frecuentes</h2>
+      <details><summary>¿Puedo subirlo a GitHub?</summary><p>Sí. El frontend puede publicarse con GitHub Pages. El backend debe alojarse en un servicio que ejecute Node.js.</p></details>
+      <details><summary>¿Descarga enlaces de TikTok, Instagram o YouTube?</summary><p>No directamente. Para esas plataformas debes usar sus APIs o mecanismos autorizados y respetar sus términos y los derechos sobre el contenido.</p></details>
+      <details><summary>¿Puedo cambiar el nombre y los colores?</summary><p>Sí. Todo el diseño está en style.css y el texto principal en index.html.</p></details>
     </section>
   </main>
 
-  <footer>
-    <div class="footer-brand"><span class="brand-mark">90</span><div><b>DESCARGA 90</b><small>Hecho para una experiencia simple.</small></div></div>
-    <p>© 2026 Descarga 90</p>
-  </footer>
-
+  <footer>© 2026 DESCARGA 90 · Usa el servicio únicamente con contenido que tengas derecho a descargar.</footer>
   <script src="script.js"></script>
 </body>
 </html>

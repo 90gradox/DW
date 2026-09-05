@@ -1,24 +1,55 @@
 # DESCARGA 90
 
-Interfaz frontend estética y responsive para una web de análisis/descarga de contenido multimedia.
+Proyecto listo para publicar el **frontend en GitHub Pages** y ejecutar el backend por separado.
 
-## Archivos
-- index.html — estructura de la web.
-- style.css — diseño, responsive y animaciones.
-- script.js — interacción de plataformas, análisis visual simulado y FAQ.
+## 1. Publicar en GitHub Pages
 
-## Abrir
-Haz doble clic en `index.html` para ver la web localmente.
+Sube:
+- `index.html`
+- `style.css`
+- `script.js`
+- `assets/`
+
+En GitHub: **Settings → Pages → Deploy from branch → main → /(root)**.
+
+## 2. Backend
+
+La carpeta `backend/` contiene un servidor Node.js que descarga **URLs directas a archivos de video** que sean públicamente accesibles.
+
+En el backend:
+
+```bash
+npm install
+npm start
+```
+
+Luego, en `script.js`, cambia:
+
+```js
+const API_BASE = "";
+```
+
+por la URL pública de tu backend, por ejemplo:
+
+```js
+const API_BASE = "https://tu-backend.example.com";
+```
 
 ## Importante
-Esta versión es el FRONTEND. El botón de análisis muestra una respuesta simulada.
-Para realizar descargas reales necesitas un backend propio que procese únicamente contenido que tengas derecho a descargar y que respete las condiciones de las plataformas.
 
-No incluye mecanismos para saltar DRM, controles de acceso ni restricciones técnicas.
+GitHub Pages no ejecuta Node.js; por eso el backend debe estar alojado en otro servicio.
 
+Esta plantilla no incluye extracción/scraping de TikTok, Instagram, Facebook o YouTube. Para esas plataformas debes utilizar APIs o mecanismos autorizados y respetar sus términos de servicio y los derechos sobre el contenido.
 
-## Corrección de la alerta
-Se eliminó el `alert()` que mostraba el mensaje "La interfaz está lista..." al pulsar un formato.
-Ahora los mensajes aparecen dentro de la página, sin ventanas emergentes.
+## Estructura
 
-También se añadió detección básica de plataforma por dominio para TikTok, Instagram, Facebook y YouTube.
+```text
+Descarga90/
+├── index.html
+├── style.css
+├── script.js
+├── assets/
+└── backend/
+    ├── package.json
+    └── server.js
+```
