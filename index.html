@@ -1,66 +1,137 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1">
-  <meta name="description" content="Descarga 90 — descargador de videos desde URLs directas.">
-  <title>Descarga 90 — Tu contenido. Tu descarga.</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Portafolio fotográfico de 90GRADOX PHOTO. Retratos, eventos, producto y fotografía comercial.">
+  <title>90GRADOX PHOTO — Fotografía</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <header class="nav">
-    <a class="brand" href="#"><span class="logo">90</span><span>DESCARGA <b>90</b></span></a>
-    <nav><a href="#como">Cómo funciona</a><a href="#formatos">Formatos</a><a href="#faq">FAQ</a></nav>
+  <div class="cursor-glow"></div>
+
+  <header class="site-header">
+    <a href="#" class="logo"><span>90GRADO</span><b>X</b><small>PHOTO</small></a>
+    <nav id="mainNav">
+      <a href="#inicio" class="active">Inicio</a>
+      <a href="#portafolio">Portafolio</a>
+      <a href="#sobre-mi">Sobre mí</a>
+      <a href="#servicios">Servicios</a>
+      <a href="#contacto">Contacto</a>
+    </nav>
+    <div class="header-actions">
+      <a class="social" href="#" aria-label="Instagram">◎</a>
+      <a class="social" href="#" aria-label="YouTube">▶</a>
+      <a class="contact-btn" href="#contacto">Contáctame <span>→</span></a>
+    </div>
+    <button class="menu" id="menu" aria-label="Menú">☰</button>
   </header>
 
   <main>
-    <section class="hero">
-      <div class="eyebrow">● SIMPLE · RÁPIDO · 90</div>
-      <h1>Tu contenido.<br><em>Tu descarga.</em></h1>
-      <p class="lead">Pega el enlace directo de un video que tengas derecho a descargar y obtén el archivo de forma sencilla.</p>
-
-      <div class="downloader">
-        <div class="tabs"><button class="active">MP4 · VIDEO</button></div>
-        <div class="input-row">
-          <input id="url" type="url" placeholder="https://ejemplo.com/video.mp4" autocomplete="off">
-          <button id="analyze">Analizar <span>→</span></button>
+    <section class="hero" id="inicio">
+      <img class="hero-image" src="assets/hero.jpg" alt="Cámara fotográfica en un ambiente cinematográfico">
+      <div class="hero-overlay"></div>
+      <div class="hero-content">
+        <div class="eyebrow"><i></i> FOTOGRAFÍA QUE CUENTA HISTORIAS</div>
+        <h1>CAPTURA<br><span>MOMENTOS</span><br>EXTRAORDINARIOS</h1>
+        <p>Fotografía profesional para personas, marcas y proyectos que buscan algo más que una simple imagen.</p>
+        <div class="hero-buttons">
+          <a class="btn red" href="#portafolio">Ver portafolio <span>→</span></a>
+          <a class="btn ghost" href="#contacto">Contáctame</a>
         </div>
-        <div class="hint">Admite URLs directas a archivos de video, como .mp4, .webm o .mov.</div>
+      </div>
+      <div class="hero-side">CREA<br>CAPTURA<br>INSPIRA</div>
+      <div class="scroll">SCROLL <span>↓</span></div>
+    </section>
 
-        <div id="result" class="result hidden">
-          <div class="preview"><span>90</span><small>VIDEO</small></div>
-          <div class="result-info">
-            <div class="tag">ENLACE DETECTADO</div>
-            <h3 id="resultTitle">Video listo</h3>
-            <p id="resultUrl"></p>
-          </div>
-          <button id="download" class="download-btn">↓ DESCARGAR MP4</button>
+    <section class="portfolio section" id="portafolio">
+      <div class="section-top">
+        <div>
+          <div class="eyebrow"><i></i> MI TRABAJO</div>
+          <h2>PORTAFOLIO</h2>
         </div>
-        <div id="status" class="status"></div>
+        <div class="filters" id="filters">
+          <button class="active" data-filter="all">Todos</button>
+          <button data-filter="retrato">Retratos</button>
+          <button data-filter="eventos">Eventos</button>
+          <button data-filter="producto">Producto</button>
+          <button data-filter="paisajes">Paisajes</button>
+          <button data-filter="urbano">Urbano</button>
+        </div>
+      </div>
+
+      <div class="gallery" id="gallery">
+        <article class="work-card" data-category="retrato"><img src="assets/retratos.jpg" alt="Retrato"><div><small>RETRATOS</small><b>↗</b></div></article>
+        <article class="work-card" data-category="eventos"><img src="assets/eventos.jpg" alt="Evento"><div><small>EVENTOS</small><b>↗</b></div></article>
+        <article class="work-card" data-category="producto"><img src="assets/producto.jpg" alt="Fotografía de producto"><div><small>PRODUCTO</small><b>↗</b></div></article>
+        <article class="work-card" data-category="paisajes"><img src="assets/paisajes.jpg" alt="Paisaje"><div><small>PAISAJES</small><b>↗</b></div></article>
+        <article class="work-card" data-category="urbano"><img src="assets/urbano.jpg" alt="Fotografía urbana"><div><small>URBANO</small><b>↗</b></div></article>
+        <article class="work-card" data-category="mascotas"><img src="assets/mascotas.jpg" alt="Mascota"><div><small>MASCOTAS</small><b>↗</b></div></article>
+        <article class="work-card" data-category="aereo"><img src="assets/aereo.jpg" alt="Fotografía aérea"><div><small>AÉREO</small><b>↗</b></div></article>
+        <article class="work-card" data-category="gastronomia"><img src="assets/gastronomia.jpg" alt="Gastronomía"><div><small>GASTRONOMÍA</small><b>↗</b></div></article>
+        <article class="work-card" data-category="editorial"><img src="assets/editorial.jpg" alt="Editorial"><div><small>EDITORIAL</small><b>↗</b></div></article>
+        <article class="work-card" data-category="eventos"><img src="assets/conciertos.jpg" alt="Concierto"><div><small>CONCIERTOS</small><b>↗</b></div></article>
+        <article class="work-card" data-category="urbano"><img src="assets/estilo-vida.jpg" alt="Estilo de vida"><div><small>ESTILO DE VIDA</small><b>↗</b></div></article>
+        <article class="work-card" data-category="arquitectura"><img src="assets/arquitectura.jpg" alt="Arquitectura"><div><small>ARQUITECTURA</small><b>↗</b></div></article>
       </div>
     </section>
 
-    <section id="como" class="steps">
-      <article><b>01</b><h3>Pega el enlace</h3><p>Usa una URL directa al archivo de video.</p></article>
-      <article><b>02</b><h3>Analiza</h3><p>La página comprueba que la URL sea compatible.</p></article>
-      <article><b>03</b><h3>Descarga</h3><p>El backend autorizado entrega el archivo.</p></article>
-      <article><b>90</b><h3>Listo</h3><p>Guarda tu video donde quieras.</p></article>
+    <section class="about section" id="sobre-mi">
+      <div class="about-copy">
+        <div class="eyebrow"><i></i> SOBRE MÍ</div>
+        <h2>HOLA, SOY<br><span>90GRADOX</span></h2>
+        <p>Fotógrafo y creador visual apasionado por capturar la esencia de cada momento. Me especializo en retratos, eventos, fotografía comercial y proyectos creativos.</p>
+        <p>Cada imagen es una oportunidad para contar una historia, transmitir una emoción y hacer que una marca o recuerdo se vea increíble.</p>
+        <a class="btn red" href="#contacto">Conoce más sobre mí <span>→</span></a>
+      </div>
+      <div class="about-visual">
+        <div class="about-photo"><img src="assets/editorial.jpg" alt="Fotografía editorial"></div>
+        <div class="about-number">90<span>°</span></div>
+      </div>
     </section>
 
-    <section id="formatos" class="info">
-      <h2>Diseñado para ser simple.</h2>
-      <p>Esta versión está preparada para GitHub Pages y un backend independiente. No expone claves privadas en el navegador.</p>
+    <section class="services section" id="servicios">
+      <div class="service-intro">
+        <div class="eyebrow"><i></i> SERVICIOS</div>
+        <h2>¿EN QUÉ PUEDO<br><span>AYUDARTE?</span></h2>
+      </div>
+      <div class="service-grid">
+        <div class="service"><b>01</b><span>◉</span><h3>Sesiones fotográficas</h3><p>Retratos personales, profesionales y creativos.</p></div>
+        <div class="service"><b>02</b><span>□</span><h3>Eventos</h3><p>Sociales, corporativos y experiencias.</p></div>
+        <div class="service"><b>03</b><span>◇</span><h3>Fotografía de producto</h3><p>Imágenes comerciales para marcas y negocios.</p></div>
+        <div class="service"><b>04</b><span>▣</span><h3>Contenido para redes</h3><p>Fotografía pensada para Instagram y campañas.</p></div>
+        <div class="service"><b>05</b><span>⌁</span><h3>Tomas aéreas</h3><p>Perspectivas diferentes para proyectos especiales.</p></div>
+        <div class="service"><b>06</b><span>✎</span><h3>Edición profesional</h3><p>Retoque y acabado visual para entregar imágenes listas.</p></div>
+      </div>
     </section>
 
-    <section id="faq" class="faq">
-      <h2>Preguntas frecuentes</h2>
-      <details><summary>¿Puedo subirlo a GitHub?</summary><p>Sí. El frontend puede publicarse con GitHub Pages. El backend debe alojarse en un servicio que ejecute Node.js.</p></details>
-      <details><summary>¿Descarga enlaces de TikTok, Instagram o YouTube?</summary><p>No directamente. Para esas plataformas debes usar sus APIs o mecanismos autorizados y respetar sus términos y los derechos sobre el contenido.</p></details>
-      <details><summary>¿Puedo cambiar el nombre y los colores?</summary><p>Sí. Todo el diseño está en style.css y el texto principal en index.html.</p></details>
+    <section class="numbers">
+      <div><strong>+100</strong><span>Proyectos</span></div>
+      <div><strong>+50</strong><span>Clientes</span></div>
+      <div><strong>COL</strong><span>Disponible para viajar</span></div>
+      <blockquote>“Las mejores historias<br>siempre se capturan<br>en imágenes.”</blockquote>
+    </section>
+
+    <section class="contact section" id="contacto">
+      <div class="eyebrow"><i></i> HABLEMOS</div>
+      <h2>TIENES UNA IDEA.<br><span>HAGÁMOSLA REAL.</span></h2>
+      <p>Cuéntame sobre tu proyecto, fecha y lo que necesitas. Te responderé para definir la mejor propuesta.</p>
+      <div class="contact-actions">
+        <a class="btn red" href="mailto:tuemail@ejemplo.com">Escríbeme <span>→</span></a>
+        <a class="btn ghost dark-btn" href="https://instagram.com/" target="_blank" rel="noopener">Instagram</a>
+      </div>
     </section>
   </main>
 
-  <footer>© 2026 DESCARGA 90 · Usa el servicio únicamente con contenido que tengas derecho a descargar.</footer>
+  <footer>
+    <div class="logo"><span>90GRADO</span><b>X</b><small>PHOTO</small></div>
+    <p>© 2026 90GRADOX PHOTO · Todos los derechos reservados.</p>
+    <a href="#inicio">Volver arriba ↑</a>
+  </footer>
+
   <script src="script.js"></script>
 </body>
 </html>

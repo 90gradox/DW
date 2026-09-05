@@ -1,82 +1,57 @@
-const API_BASE = ""; // Ej.: "https://tu-backend.example.com"
+const filters = document.querySelectorAll("#filters button");
+const cards = document.querySelectorAll(".work-card");
+const navLinks = document.querySelectorAll("#mainNav a");
+const menu = document.getElementById("menu");
+const nav = document.getElementById("mainNav");
 
-const urlInput = document.getElementById("url");
-const analyzeBtn = document.getElementById("analyze");
-const result = document.getElementById("result");
-const statusBox = document.getElementById("status");
-const resultUrl = document.getElementById("resultUrl");
-const downloadBtn = document.getElementById("download");
-
-let currentUrl = "";
-
-function setStatus(text, error=false){
-  statusBox.textContent = text;
-  statusBox.className = "status" + (error ? " error" : "");
-}
-
-function looksLikeDirectVideo(url){
-  try{
-    const u = new URL(url);
-    return /^https?:$/.test(u.protocol);
-  }catch{return false}
-}
-
-analyzeBtn.addEventListener("click", async ()=>{
-  const url = urlInput.value.trim();
-  result.classList.add("hidden");
-  if(!looksLikeDirectVideo(url)){
-    setStatus("Introduce una URL válida que comience por http:// o https://.", true);
-    return;
-  }
-  currentUrl = url;
-  resultUrl.textContent = url;
-  setStatus("Comprobando enlace…");
-
-  // Si hay backend configurado, consulta sus metadatos.
-  if(API_BASE){
-    try{
-      const r = await fetch(`${API_BASE}/api/inspect?url=${encodeURIComponent(url)}`);
-      if(!r.ok) throw new Error("No se pudo analizar el enlace.");
-      const data = await r.json();
-      resultUrl.textContent = data.filename || url;
-    }catch(e){
-      setStatus(e.message, true);
-      return;
-    }
-  }
-  result.classList.remove("hidden");
-  setStatus("Enlace listo. Pulsa descargar.");
+filters.forEach(filter => {
+  filter.addEventListener("click", () => {
+    filters.forEach(f => f.classList.remove("active"));
+    filter.classList.add("active");
+    const value = filter.dataset.filter;
+    cards.forEach(card => {
+      const visible = value === "all" || card.dataset.category === value;
+      card.style.display = visible ? "" : "none";
+    });
+  });
 });
 
-downloadBtn.addEventListener("click", async ()=>{
-  if(!currentUrl) return;
-  if(!API_BASE){
-    // Descarga directa para URLs de archivos públicos.
-    const a = document.createElement("a");
-    a.href = currentUrl;
-    a.target = "_blank";
-    a.rel = "noopener";
-    a.download = "";
-    document.body.appendChild(a);
-    a.click();
-    a.remove();
-    setStatus("Si el servidor de origen lo permite, la descarga comenzará en una nueva pestaña.");
-    return;
-  }
+const sections = [...document.querySelectorAll("main section[id]")];
+window.addEventListener("scroll", () => {
+  const current = sections.reduce((acc, section) => {
+    if (window.scrollY >= section.offsetTop - 180) return section.id;
+    return acc;
+  }, "inicio");
+  navLinks.forEach(link => link.classList.toggle("active", link.getAttribute("href") === "#" + current));
+});
 
-  try{
-    setStatus("Preparando descarga…");
-    const r = await fetch(`${API_BASE}/api/download?url=${encodeURIComponent(currentUrl)}`);
-    if(!r.ok) throw new Error("El backend rechazó la descarga.");
-    const blob = await r.blob();
-    const disposition = r.headers.get("Content-Disposition") || "";
-    const match = disposition.match(/filename="?([^"]+)"?/i);
-    const filename = match ? match[1] : "descarga-90-video";
-    const a = document.createElement("a");
-    a.href = URL.createObjectURL(blob);
-    a.download = filename;
-    a.click();
-    URL.revokeObjectURL(a.href);
-    setStatus("Descarga iniciada.");
-  }catch(e){ setStatus(e.message, true); }
+if (menu) {
+  menu.addEventListener("click", () => {
+    const open = nav.classList.toggle("open");
+    nav.style.display = open ? "flex" : "";
+    nav.style.position = "absolute";
+    nav.style.top = "64px";
+    nav.style.right = "16px";
+    nav.style.flexDirection = "column";
+    nav.style.padding = "15px 20px";
+    nav.style.background = "#0b0b0b";
+    nav.style.border = "1px solid #242424";
+    nav.style.borderRadius = "12px";
+    nav.style.gap = "0";
+  });
+}
+
+document.querySelectorAll('a[href^="#"]').forEach(link => {
+  link.addEventListener("click", () => {
+    if (nav.classList.contains("open")) {
+      nav.classList.remove("open");
+      nav.style.display = "";
+    }
+  });
+});
+
+const glow = document.querySelector(".cursor-glow");
+window.addEventListener("pointermove", e => {
+  glow.style.left = e.clientX + "px";
+  glow.style.top = e.clientY + "px";
 });

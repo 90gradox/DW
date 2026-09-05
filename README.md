@@ -1,55 +1,21 @@
-# DESCARGA 90
+# 90GRADOX PHOTO — PORTAFOLIO
 
-Proyecto listo para publicar el **frontend en GitHub Pages** y ejecutar el backend por separado.
+Portafolio fotográfico estático listo para subir a Netlify, GitHub Pages, Cloudflare Pages o cualquier hosting estático.
 
-## 1. Publicar en GitHub Pages
+## Archivos
+- index.html
+- style.css
+- script.js
+- assets/ — hero y 12 miniaturas
 
-Sube:
-- `index.html`
-- `style.css`
-- `script.js`
-- `assets/`
+## Personalización rápida
+1. Abre `index.html`.
+2. Cambia el texto de presentación.
+3. Cambia el correo `tuemail@ejemplo.com`.
+4. Cambia los enlaces de Instagram/YouTube.
+5. Reemplaza las imágenes de `assets/` por tus propias fotografías conservando los nombres, o modifica las rutas en `index.html`.
 
-En GitHub: **Settings → Pages → Deploy from branch → main → /(root)**.
+## Publicación
+Sube la carpeta completa a tu hosting. `index.html` debe quedar en la raíz.
 
-## 2. Backend
-
-La carpeta `backend/` contiene un servidor Node.js que descarga **URLs directas a archivos de video** que sean públicamente accesibles.
-
-En el backend:
-
-```bash
-npm install
-npm start
-```
-
-Luego, en `script.js`, cambia:
-
-```js
-const API_BASE = "";
-```
-
-por la URL pública de tu backend, por ejemplo:
-
-```js
-const API_BASE = "https://tu-backend.example.com";
-```
-
-## Importante
-
-GitHub Pages no ejecuta Node.js; por eso el backend debe estar alojado en otro servicio.
-
-Esta plantilla no incluye extracción/scraping de TikTok, Instagram, Facebook o YouTube. Para esas plataformas debes utilizar APIs o mecanismos autorizados y respetar sus términos de servicio y los derechos sobre el contenido.
-
-## Estructura
-
-```text
-Descarga90/
-├── index.html
-├── style.css
-├── script.js
-├── assets/
-└── backend/
-    ├── package.json
-    └── server.js
-```
+Las imágenes incluidas son material visual de demostración generado para la maqueta. Para un portafolio real, reemplázalas por tus fotografías.
